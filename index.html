@@ -4,217 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stratum Mining.Notify Parser</title>
+    <link rel="stylesheet" href="https://unpkg.com/@sakun/system.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
             padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-        }
-        
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        
-        header h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-        
-        header p {
-            opacity: 0.9;
-            font-size: 1.1em;
-        }
-        
-        .content {
-            padding: 30px;
-        }
-        
-        .input-section {
-            margin-bottom: 30px;
-        }
-        
-        label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #333;
-            font-size: 1.1em;
+        .window {
+            width: 100%;
+            max-width: 900px;
         }
         
         textarea {
             width: 100%;
-            min-height: 150px;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
+            min-height: 120px;
+            font-family: "Geneva", monospace;
+            font-size: 10px;
             resize: vertical;
-            transition: border-color 0.3s;
-        }
-        
-        textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-        
-        button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.1em;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-        }
-        
-        button:active {
-            transform: translateY(0);
         }
         
         .output-section {
-            margin-top: 30px;
             display: none;
+            margin-top: 10px;
         }
         
         .output-section.visible {
             display: block;
         }
         
-        .output-box {
-            background: #f8f9fa;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 25px;
-        }
-        
-        .output-title {
-            font-size: 1.5em;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 20px;
-            text-align: center;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 10px;
-        }
-        
         .output-item {
-            margin-bottom: 15px;
-            display: flex;
-            flex-wrap: wrap;
+            margin: 4px 0;
+            font-size: 10px;
         }
         
         .output-label {
-            font-weight: 600;
-            color: #555;
-            min-width: 180px;
-            margin-right: 10px;
+            font-weight: bold;
+            display: inline-block;
+            min-width: 140px;
         }
         
         .output-value {
-            font-family: 'Courier New', monospace;
-            color: #333;
+            font-family: "Geneva", monospace;
             word-break: break-all;
-            flex: 1;
         }
         
         .coinbase-outputs {
-            margin-top: 25px;
-            border-top: 2px solid #e0e0e0;
-            padding-top: 20px;
+            margin-top: 12px;
         }
         
         .coinbase-title {
-            font-size: 1.3em;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 15px;
+            font-weight: bold;
+            margin-bottom: 8px;
         }
         
         .output-entry {
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
+            margin-bottom: 8px;
+            padding: 8px;
+            background: #fff;
+            border: 1px solid #000;
         }
         
         .output-entry-title {
-            font-weight: 700;
-            color: #764ba2;
-            margin-bottom: 10px;
-            font-size: 1.1em;
-        }
-        
-        .error {
-            background: #fee;
-            border: 2px solid #fcc;
-            border-radius: 8px;
-            padding: 20px;
-            color: #c00;
-            margin-top: 20px;
-        }
-        
-        .error-title {
-            font-weight: 700;
-            font-size: 1.2em;
-            margin-bottom: 10px;
+            font-weight: bold;
+            margin-bottom: 4px;
         }
         
         @media (max-width: 768px) {
-            .output-item {
-                flex-direction: column;
-            }
-            
-            .output-label {
-                margin-bottom: 5px;
+            body {
+                padding: 10px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>⛏️ Stratum Mining.Notify Parser</h1>
-            <p>Parse Bitcoin mining pool Stratum messages</p>
-        </header>
+    <div class="window" style="width: 95%; max-width: 900px;">
+        <div class="title-bar">
+            <button aria-label="Close" class="close"></button>
+            <h1 class="title">⛏ Stratum Mining.Notify Parser</h1>
+            <button aria-label="Resize" disabled class="hidden"></button>
+        </div>
+        <div class="separator"></div>
         
-        <div class="content">
-            <div class="input-section">
-                <label for="notifyInput">Enter mining.notify JSON:</label>
-                <textarea 
-                    id="notifyInput" 
-                    placeholder='{"params":["job_id","prevhash","coinbase1","coinbase2",[merkle_branches],"version","nbits","ntime",clean_jobs],"id":null,"method":"mining.notify"}'
-                ></textarea>
-                <button onclick="parseNotify()">Parse</button>
-            </div>
+        <div class="window-pane">
+            <label for="notifyInput">Enter mining.notify JSON:</label>
+            <textarea 
+                id="notifyInput" 
+                rows="6"
+                placeholder='{"params":["job_id","prevhash","coinbase1","coinbase2",[merkle_branches],"version","nbits","ntime",clean_jobs],"id":null,"method":"mining.notify"}'
+            ></textarea>
+            
+            <section class="field-row" style="justify-content: flex-start; margin-top: 10px;">
+                <button class="btn" onclick="parseNotify()">Parse</button>
+            </section>
             
             <div id="output" class="output-section"></div>
         </div>
@@ -561,7 +446,7 @@
             const outputDiv = document.getElementById('output');
             
             if (!input) {
-                outputDiv.innerHTML = '<div class="error"><div class="error-title">Error</div>Please enter a mining.notify JSON string</div>';
+                outputDiv.innerHTML = '<fieldset><legend>Error</legend><p>Please enter a mining.notify JSON string</p></fieldset>';
                 outputDiv.classList.add('visible');
                 return;
             }
@@ -575,42 +460,41 @@
                 const ntimeDate = new Date(ntimeInt * 1000).toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
                 
                 // Build output HTML
-                let html = '<div class="output-box">';
-                html += '<div class="output-title">STRATUM MINING.NOTIFY PARSED DATA</div>';
+                let html = '<fieldset><legend>Parsed Results</legend>';
                 
                 html += `<div class="output-item">
-                    <div class="output-label">Job ID:</div>
-                    <div class="output-value">${result.job_id}</div>
+                    <span class="output-label">Job ID:</span>
+                    <span class="output-value">${result.job_id}</span>
                 </div>`;
                 
                 html += `<div class="output-item">
-                    <div class="output-label">Block Height:</div>
-                    <div class="output-value">${result.height !== null ? result.height : 'Unable to extract'}</div>
+                    <span class="output-label">Block Height:</span>
+                    <span class="output-value">${result.height !== null ? result.height : 'Unable to extract'}</span>
                 </div>`;
                 
                 html += `<div class="output-item">
-                    <div class="output-label">Previous Hash:</div>
-                    <div class="output-value">${result.prevhash}</div>
+                    <span class="output-label">Previous Hash:</span>
+                    <span class="output-value">${result.prevhash}</span>
                 </div>`;
                 
                 html += `<div class="output-item">
-                    <div class="output-label">Block Version:</div>
-                    <div class="output-value">${result.version}</div>
+                    <span class="output-label">Block Version:</span>
+                    <span class="output-value">${result.version}</span>
                 </div>`;
                 
                 html += `<div class="output-item">
-                    <div class="output-label">Difficulty (nBits):</div>
-                    <div class="output-value">${result.nbits}</div>
+                    <span class="output-label">Difficulty (nBits):</span>
+                    <span class="output-value">${result.nbits}</span>
                 </div>`;
                 
                 html += `<div class="output-item">
-                    <div class="output-label">Timestamp (nTime):</div>
-                    <div class="output-value">${result.ntime} (${ntimeDate})</div>
+                    <span class="output-label">Timestamp (nTime):</span>
+                    <span class="output-value">${result.ntime} (${ntimeDate})</span>
                 </div>`;
                 
                 html += `<div class="output-item">
-                    <div class="output-label">Clean Jobs:</div>
-                    <div class="output-value">${result.clean_jobs}</div>
+                    <span class="output-label">Clean Jobs:</span>
+                    <span class="output-value">${result.clean_jobs}</span>
                 </div>`;
                 
                 // Coinbase outputs
@@ -622,16 +506,16 @@
                         html += '<div class="output-entry">';
                         html += `<div class="output-entry-title">Output ${i + 1}:</div>`;
                         html += `<div class="output-item">
-                            <div class="output-label">Value:</div>
-                            <div class="output-value">${output.value_btc.toFixed(8)} BTC (${output.value_satoshis.toLocaleString()} satoshis)</div>
+                            <span class="output-label">Value:</span>
+                            <span class="output-value">${output.value_btc.toFixed(8)} BTC (${output.value_satoshis.toLocaleString()} satoshis)</span>
                         </div>`;
                         html += `<div class="output-item">
-                            <div class="output-label">Type:</div>
-                            <div class="output-value">${output.type}</div>
+                            <span class="output-label">Type:</span>
+                            <span class="output-value">${output.type}</span>
                         </div>`;
                         html += `<div class="output-item">
-                            <div class="output-label">Address:</div>
-                            <div class="output-value">${output.address}</div>
+                            <span class="output-label">Address:</span>
+                            <span class="output-value">${output.address}</span>
                         </div>`;
                         html += '</div>';
                     });
@@ -639,13 +523,13 @@
                     html += '</div>';
                 }
                 
-                html += '</div>';
+                html += '</fieldset>';
                 
                 outputDiv.innerHTML = html;
                 outputDiv.classList.add('visible');
                 
             } catch (e) {
-                outputDiv.innerHTML = `<div class="error"><div class="error-title">Error</div>${e.message}</div>`;
+                outputDiv.innerHTML = `<fieldset><legend>Error</legend><p>${e.message}</p></fieldset>`;
                 outputDiv.classList.add('visible');
             }
         }
