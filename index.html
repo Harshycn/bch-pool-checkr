@@ -395,31 +395,23 @@
         }
         
         // Extract addresses from coinbase outputs
-        async function extractAddressesFromCoinbase(coinbasePart2) {
+        async function extractAddressesFromCoinbase(coinbasePart1, coinbasePart2) {
             const outputs = [];
             
             try {
+                // Get scriptSig length from coinbase_part1 to calculate where outputs start
+                // Position 82: after version(8) + input_count(2) + prev_txid(64) + prev_output_index(8)
+                const scriptSigLength = parseInt(coinbasePart1.substring(82, 84), 16);
+                const scriptSigInPart1 = (coinbasePart1.length - 84) / 2; // bytes after position 84
+                const scriptSigInPart2 = scriptSigLength - scriptSigInPart1;
+                
+                // Skip remaining scriptSig bytes in part2, then sequence (4 bytes)
+                const sequencePos = scriptSigInPart2 * 2;
+                let pos = sequencePos + 8; // Skip sequence (4 bytes = 8 hex chars)
+                
                 const coinbaseHex = coinbasePart2;
                 
-                // Find sequence marker (ffffffff) followed by valid output count (01-fc for single byte varint)
-                let sequencePos = -1;
-                for (let i = 0; i < coinbaseHex.length - 10; i += 2) {
-                    if (coinbaseHex.substring(i, i + 8) === 'ffffffff') {
-                        const nextByte = parseInt(coinbaseHex.substring(i + 8, i + 10), 16);
-                        // Valid output count: 1-252 (0xfc is varint marker, so single byte is 1-252)
-                        if (nextByte >= 1 && nextByte <= 252) {
-                            sequencePos = i;
-                            break;
-                        }
-                    }
-                }
-                
-                if (sequencePos === -1) {
-                    return outputs;
-                }
-                
-                // Skip sequence (8 chars) and read output count
-                let pos = sequencePos + 8;
+                // Read output count
                 const outputCount = parseInt(coinbaseHex.substring(pos, pos + 2), 16);
                 pos += 2;
                 
@@ -515,7 +507,7 @@
             
             // Extract addresses from coinbase outputs
             const coinbasePart2 = params[3];
-            result.outputs = await extractAddressesFromCoinbase(coinbasePart2);
+            result.outputs = await extractAddressesFromCoinbase(coinbasePart1, coinbasePart2);
             
             // Additional fields
             result.version = params[5];
