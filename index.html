@@ -191,6 +191,23 @@
             overflow: visible !important;
         }
         
+        /* Fix scrollbar arrows to show only one arrow in each direction */
+        ::-webkit-scrollbar-button:vertical:increment:end {
+            display: block !important;
+        }
+        
+        ::-webkit-scrollbar-button:vertical:increment:start {
+            display: none !important;
+        }
+        
+        ::-webkit-scrollbar-button:vertical:decrement:start {
+            display: block !important;
+        }
+        
+        ::-webkit-scrollbar-button:vertical:decrement:end {
+            display: none !important;
+        }
+        
         @media (max-width: 768px) {
             body {
                 padding: 10px;
