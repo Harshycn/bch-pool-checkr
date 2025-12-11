@@ -180,19 +180,20 @@
             display: none;
         }
         
-        /* Override scrollbar border thickness */
+        /* Override scrollbar styling */
         .window-pane::-webkit-scrollbar,
         .window::-webkit-scrollbar,
         *::-webkit-scrollbar {
             border-left: 2px solid #000 !important;
-            border-right: 2px solid #000 !important;
         }
         
         .window-pane::-webkit-scrollbar-track,
         .window::-webkit-scrollbar-track,
         *::-webkit-scrollbar-track {
             border-left: 2px solid #000 !important;
-            border-right: 2px solid #000 !important;
+            background-image: repeating-conic-gradient(#fff 0% 25%, #000 0% 50%) !important;
+            background-position: 0 0, 1px 1px !important;
+            background-size: 2px 2px !important;
         }
         
         @media (max-width: 768px) {
