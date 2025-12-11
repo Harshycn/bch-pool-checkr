@@ -21,6 +21,12 @@
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
+            background-image: 
+                repeating-linear-gradient(0deg, #000 0px, #000 1px, #fff 1px, #fff 2px),
+                repeating-linear-gradient(90deg, #000 0px, #000 1px, #fff 1px, #fff 2px);
+            background-size: 4px 4px;
+            background-position: 0 0, 0 0;
+            background-blend-mode: difference;
         }
         
         .window {
@@ -34,7 +40,7 @@
         }
         
         label {
-            margin-bottom: 6px;
+            margin-bottom: 2px;
             display: block;
         }
         
@@ -44,7 +50,7 @@
             font-family: "Geneva", monospace;
             font-size: 10px;
             resize: vertical;
-            margin-top: 6px;
+            margin-top: 1px;
         }
         
         textarea:focus {
@@ -198,7 +204,7 @@
                 placeholder='{"params":["job_id","prevhash","coinbase1","coinbase2",[merkle_branches],"version","nbits","ntime",clean_jobs],"id":null,"method":"mining.notify"}'
             ></textarea>
             
-            <section class="field-row" style="justify-content: flex-end; margin-top: 10px;">
+            <section class="field-row" style="justify-content: flex-end; margin-top: 1px;">
                 <button class="btn" onclick="clearInput()">Clear</button>
                 <button class="btn btn-default" onclick="parseNotify()" id="parseButton">Parse</button>
             </section>
