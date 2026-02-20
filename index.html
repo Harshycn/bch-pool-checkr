@@ -4,17 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BCH Stratum Mining.Notify Parser</title>
+    <title>BCH Stratum Mining.Notify Parser — Decode Coinbase Transactions</title>
     <meta name="description"
-        content="Lightweight client-side tool for parsing Bitcoin Cash (BCH) Stratum mining.notify messages. Decode coinbase transactions, extract pool tags, addresses, and block metadata.">
-    <meta name="keywords" content="BCH, Bitcoin Cash, Stratum, mining.notify, coinbase, parser, pool checker">
+        content="Free open-source tool to parse BCH Stratum mining.notify messages. Decode coinbase transactions, verify block reward addresses, extract pool tags, and detect mining fraud — all client-side, no backend needed.">
+    <meta name="keywords"
+        content="BCH, Bitcoin Cash, Stratum, mining.notify, coinbase, parser, pool checker, pool transparency, block reward, mining fraud, solo mining, Bitaxe, NerdQAxe">
     <meta name="author" content="Harshy">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://harshycn.github.io/bch-pool-checkr/">
+
+    <!-- Open Graph -->
     <meta property="og:title" content="BCH Stratum Mining.Notify Parser">
     <meta property="og:description"
-        content="Decode BCH Stratum mining.notify messages — coinbase outputs, pool tags, addresses, and block info.">
+        content="Decode BCH mining.notify messages — verify block reward addresses, coinbase outputs, pool tags, and block metadata. 100% client-side.">
     <meta property="og:url" content="https://harshycn.github.io/bch-pool-checkr/">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="BCH Pool Checkr">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="BCH Stratum Mining.Notify Parser">
+    <meta name="twitter:description"
+        content="Parse BCH Stratum mining.notify JSON to decode coinbase transactions and verify block reward recipients.">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "BCH Stratum Mining.Notify Parser",
+        "description": "Free open-source tool to parse BCH Stratum mining.notify messages. Decode coinbase transactions, verify block reward addresses, and extract pool tags.",
+        "url": "https://harshycn.github.io/bch-pool-checkr/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "author": {
+            "@type": "Person",
+            "name": "Harshy",
+            "url": "https://github.com/Harshycn"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "isAccessibleForFree": true,
+        "license": "https://opensource.org/licenses/MIT"
+    }
+    </script>
+
     <link rel="stylesheet" href="https://unpkg.com/@sakun/system.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -40,10 +78,23 @@
 
             <div id="output" class="output-section"></div>
 
-            <div style="margin-top: 20px; padding-top: 10px; border-top: 1px solid #000; font-size: 10px;">
-                <a href="https://github.com/Harshycn/bch-pool-checkr" target="_blank">View source on GitHub</a>
-                &nbsp;|&nbsp;
-                <a href="https://github.com/skot/pool_checkr" target="_blank">Original project by skot</a>
+            <div
+                style="margin-top: 20px; padding-top: 10px; border-top: 1px solid #000; font-size: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px;">
+                <span>
+                    <a href="https://github.com/Harshycn/bch-pool-checkr" target="_blank"
+                        rel="noopener noreferrer">GitHub</a>
+                    &nbsp;|&nbsp;
+                    <a href="https://github.com/skot/pool_checkr" target="_blank" rel="noopener noreferrer">Original by
+                        skot</a>
+                </span>
+                <span>
+                    <a href="https://harshy.site" target="_blank" rel="noopener noreferrer"
+                        title="Harshy's Pool — BCH Solo Mining Pool">Harshy's Pool</a>
+                    &nbsp;|&nbsp;
+                    <a href="https://github.com/Harshycn/bch-stratum-inspector" target="_blank"
+                        rel="noopener noreferrer"
+                        title="BCH Stratum Inspector — CLI tool for mining pool transparency">CLI Inspector</a>
+                </span>
             </div>
         </div>
     </div>

@@ -45,6 +45,13 @@
 - **CashAddr Encoding** — Implements the full CashAddr spec (BCH-specific polymod, 5-bit conversion, `bitcoincash:` HRP).
 - **P2PK Support** — Compressed/uncompressed public keys are hashed (SHA-256 → RIPEMD-160) to derive the corresponding CashAddr address.
 
+## ☕ Donate
+
+If this tool helped you, consider buying me a coffee ☕
+
+- **BTC:** `bc1qftzsn5py6gcy5lzlc9hc6usmqy8wqgzsamg7fh`
+- **BCH:** `bitcoincash:qqj9rrt85mzdhf3mknppz7xvkxnxlxel9ynfku43nh`
+
 ## 📄 License
 
 MIT

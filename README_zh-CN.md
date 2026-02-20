@@ -42,6 +42,13 @@
 - **CashAddr 编码** — 完整实现 CashAddr 规范（BCH 专用 polymod、5-bit 转换、`bitcoincash:` 前缀）。
 - **P2PK 支持** — 对压缩/非压缩公钥进行 SHA-256 → RIPEMD-160 哈希，推导出对应的 CashAddr 地址。
 
+## ☕ 捐赠
+
+如果这个工具对你有帮助，请考虑请我喝杯咖啡 ☕
+
+- **BTC:** `bc1qftzsn5py6gcy5lzlc9hc6usmqy8wqgzsamg7fh`
+- **BCH:** `bitcoincash:qqj9rrt85mzdhf3mknppz7xvkxnxlxel9ynfku43nh`
+
 ## 📄 许可证
 
 MIT
