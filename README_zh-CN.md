@@ -6,7 +6,7 @@
 
 ## 💾 在线演示
 
-**[→ 在线体验](https://harshycn.github.io/pool_checkr/)**
+**[→ 在线体验](https://harshycn.github.io/bch-pool-checkr/)**
 
 ## ✨ 功能特性
 
@@ -22,7 +22,7 @@
 
 ## 🚀 使用方法
 
-1. 在浏览器中打开 [index.html](index.html)，或访问 **[在线演示](https://harshycn.github.io/pool_checkr/)**
+1. 在浏览器中打开 [index.html](index.html)，或访问 **[在线演示](https://harshycn.github.io/bch-pool-checkr/)**
 2. 粘贴 BCH `mining.notify` JSON 消息
    - 可以使用 [bch-stratum-inspector](https://github.com/Harshycn/bch-stratum-inspector) 的 `--debug` 模式抓取
 3. 点击 **Parse** 或按 <kbd>Enter</kbd>

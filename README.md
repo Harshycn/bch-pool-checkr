@@ -6,7 +6,7 @@
 
 ## 💾 Live Demo
 
-**[→ Try it online](https://harshycn.github.io/pool_checkr/)**
+**[→ Try it online](https://harshycn.github.io/bch-pool-checkr/)**
 
 ## ✨ Features
 
@@ -22,7 +22,7 @@
 
 ## 🚀 Usage
 
-1. Open [index.html](index.html) in your browser, or visit the **[live demo](https://harshycn.github.io/pool_checkr/)**
+1. Open [index.html](index.html) in your browser, or visit the **[live demo](https://harshycn.github.io/bch-pool-checkr/)**
 2. Paste a BCH `mining.notify` JSON message
    - Capture one using [bch-stratum-inspector](https://github.com/Harshycn/bch-stratum-inspector) with `--debug` flag
 3. Click **Parse** or press <kbd>Enter</kbd>
