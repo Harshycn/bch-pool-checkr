@@ -1,44 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stratum Mining.Notify Parser</title>
+    <title>BCH Stratum Mining.Notify Parser</title>
+    <meta name="description"
+        content="Lightweight client-side tool for parsing Bitcoin Cash (BCH) Stratum mining.notify messages. Decode coinbase transactions, extract pool tags, addresses, and block metadata.">
+    <meta name="keywords" content="BCH, Bitcoin Cash, Stratum, mining.notify, coinbase, parser, pool checker">
+    <meta name="author" content="Harshy">
+    <link rel="canonical" href="https://harshycn.github.io/pool_checkr/">
+    <meta property="og:title" content="BCH Stratum Mining.Notify Parser">
+    <meta property="og:description"
+        content="Decode BCH Stratum mining.notify messages — coinbase outputs, pool tags, addresses, and block info.">
+    <meta property="og:url" content="https://harshycn.github.io/pool_checkr/">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://unpkg.com/@sakun/system.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="window" style="width: 95%; max-width: 900px;">
         <div class="title-bar">
             <button aria-label="Close" class="close"></button>
-            <h1 class="title">Stratum Mining.Notify Parser</h1>
+            <h1 class="title">BCH Stratum Mining.Notify Parser</h1>
             <button aria-label="Resize" disabled class="hidden"></button>
         </div>
         <div class="separator"></div>
-        
+
         <div class="window-pane">
-            <label for="notifyInput">Enter mining.notify JSON:</label>
-            <textarea 
-                id="notifyInput" 
-                rows="6"
-                spellcheck="false"
-                placeholder='{"params":["job_id","prevhash","coinbase1","coinbase2",[merkle_branches],"version","nbits","ntime",clean_jobs],"id":null,"method":"mining.notify"}'
-            ></textarea>
-            
+            <label for="notifyInput">Enter BCH mining.notify JSON:</label>
+            <textarea id="notifyInput" rows="6" spellcheck="false"
+                placeholder='{"params":["job_id","prevhash","coinbase1","coinbase2",[merkle_branches],"version","nbits","ntime",clean_jobs],"id":null,"method":"mining.notify"}'></textarea>
+
             <section class="field-row" style="justify-content: flex-end; margin-top: 1px;">
                 <button class="btn" onclick="clearInput()">Clear</button>
                 <button class="btn btn-default" onclick="parseNotify()" id="parseButton">Parse</button>
             </section>
-            
+
             <div id="output" class="output-section"></div>
-            
+
             <div style="margin-top: 20px; padding-top: 10px; border-top: 1px solid #000; font-size: 10px;">
-                <a href="https://github.com/skot/pool_checkr" target="_blank">View source on GitHub</a>
+                <a href="https://github.com/Harshycn/pool_checkr" target="_blank">View source on GitHub</a>
+                &nbsp;|&nbsp;
+                <a href="https://github.com/skot/pool_checkr" target="_blank">Original project by skot</a>
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
-</html>
 
+</html>
