@@ -53,5 +53,6 @@ MIT
 
 - Original project by [skot](https://github.com/skot/pool_checkr)
 - BCH logic ported from [bch-stratum-inspector](https://github.com/Harshycn/bch-stratum-inspector)
+- BCH solo mining pool by [Harshy's Pool](https://harshy.site/)
 - System 6 UI by [sakofchit/system.css](https://github.com/sakofchit/system.css)
 - Chicago Kare font by Duane King — [duaneking/Chicago-Kare](https://github.com/duaneking/Chicago-Kare) (MIT)

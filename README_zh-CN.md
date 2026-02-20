@@ -53,5 +53,6 @@ MIT
 
 - 原始项目：[skot/pool_checkr](https://github.com/skot/pool_checkr)
 - BCH 逻辑移植自：[bch-stratum-inspector](https://github.com/Harshycn/bch-stratum-inspector)
+- BCH Solo 矿池：[Harshy's Pool](https://harshy.site/)
 - System 6 界面：[sakofchit/system.css](https://github.com/sakofchit/system.css)
 - Chicago Kare 字体：Duane King — [duaneking/Chicago-Kare](https://github.com/duaneking/Chicago-Kare)（MIT 许可）
